@@ -2,7 +2,6 @@ package mcp
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"time"
 
@@ -53,13 +52,4 @@ func (s *Server) Start() error {
 	}
 
 	return nil
-}
-
-func helloHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	name, ok := request.Params.Arguments["name"].(string)
-	if !ok {
-		return nil, errors.New("name must be a string")
-	}
-
-	return mcp.NewToolResultText(fmt.Sprintf("Hello, %s!", name)), nil
 }
